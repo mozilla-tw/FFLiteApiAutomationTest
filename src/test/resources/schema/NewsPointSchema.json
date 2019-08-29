@@ -1,0 +1,40 @@
+{
+  "resTime": 0,
+  "status": "OK",
+  "brandInfo": {
+    "logo": "https://opt.toiimg.com/images/logo/np/np-logo-128x128.png"
+  },
+  "debugInfo": {
+  },
+  "itemsFound": 0,
+  "pg": {
+    "tp": 500,
+    "cp": 1,
+    "pp": 5
+  },
+  "items": [
+    {
+      "hl": "Lok Sabha Elections 2019: Scales tilted in favor of ruling NDA in the first four phases, says PM Modi",
+      "id": "14504820bf8316b1e37076a791f07afd63e66a6b",
+      "imageid": "https://opt.toiimg.com/rc/Td2dgTA-",
+      "images": [
+        "https://opt.toiimg.com/rc/Td2dgTA-"
+      ],
+      "pn": "Catch News",
+      "dl": "Tue Apr 30 13:36:00 IST 2019",
+      "dm": "t",
+      "pid": 1999,
+      "lid": 1,
+      "lang": "english",
+      "tn": "news",
+      "wu": "http://www.catchnews.com/news-point/national-news/lok-sabha-elections-2019-scales-tilted-in-favor-of-ruling-nda-in-the-first-four-phases-says-pm-modi-158701.html?utm_source=news-point&utm_medium=referral&utm_campaign=website",
+      "pnu": "https://nprssfeeds.indiatimes.com/feeds/photo/58345197.cms",
+      "fu": "http://nprssfeeds.indiatimes.com/feed/fx/news/14504820bf8316b1e37076a791f07afd63e66a6b?v=v1",
+      "sec": "top-news",
+      "mwu": "https://www.newspointapp.com/english-news/publisher-catchnews/top-news/lok-sabha-elections-2019-scales-tilted-favor-ruling-nda-first-four-phases-says-pm-modi/articleshow/14504820bf8316b1e37076a791f07afd63e66a6b?utm_source=mozilla_browser&utm_medium=referral&utm_campaign=np",
+      "m": "https://npurl.in/uyAECTkT",
+      "tags": [
+      ]
+    }
+  ]
+}
