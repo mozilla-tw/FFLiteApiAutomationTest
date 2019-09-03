@@ -38,13 +38,7 @@ public class envConfigService {
         propFile = new FileInputStream(envPropertyFile);
         Properties p = new Properties(System.getProperties());
         p.load(propFile);
-<<<<<<< HEAD
-        // set the system properties
         System.setProperties(p);
-        // display new properties
-=======
-        System.setProperties(p);
->>>>>>> 3d78cff... use simple system properties to load property file
         System.getProperties().list(System.out);
     }
 }

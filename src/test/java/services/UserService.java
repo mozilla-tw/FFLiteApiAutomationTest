@@ -6,13 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
-<<<<<<< HEAD
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-=======
-import java.io.IOException;
->>>>>>> 3d78cff... use simple system properties to load property file
 import java.text.MessageFormat;
 import java.util.Properties;
 
@@ -30,13 +24,7 @@ public class UserService {
         propFile = new FileInputStream(userPropertyFile);
         Properties p = new Properties(System.getProperties());
         p.load(propFile);
-<<<<<<< HEAD
-        // set the system properties
         System.setProperties(p);
-        // display new properties
-=======
-        System.setProperties(p);
->>>>>>> 3d78cff... use simple system properties to load property file
         System.getProperties().list(System.out);
     }
 
