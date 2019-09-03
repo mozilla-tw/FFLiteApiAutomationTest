@@ -2,19 +2,31 @@ package services;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.slf4j.LoggerFactory;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.Properties;
 
-import org.slf4j.Logger;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+
+//@Configuration
+//@EnableConfigurationProperties
+//@ConfigurationProperties(prefix="server")
 public class envConfigService {
-    private static Logger logger = LoggerFactory.getLogger(envConfigService.class);
+
+    @Value("${spring.application.name}")
+    String name;
+
+    @Value("${server.protocol}")
+    String protocol;
+
 
     /**
      * check connection to server host
@@ -35,7 +47,8 @@ public class envConfigService {
     /**
      * load properties based on server environment
      */
-    public void loadEnvProperties() {
+    /*public void loadEnvProperties() {
+
         String envPropertyFile = MessageFormat.format("src/test/resources/env/{0}.properties", System.getProperty("env", "local"));
         try (InputStream input = new FileInputStream(envPropertyFile)) {
 
@@ -54,6 +67,6 @@ public class envConfigService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
 

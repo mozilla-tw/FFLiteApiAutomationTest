@@ -1,0 +1,32 @@
+spring:
+  profiles.active: mock
+---
+spring:
+  profiles: mock
+  application:
+    name: demoservice
+server:
+  port: 8080
+  host: 5d5e48e2f30df20014d42178.mockapi.io
+  user: root
+  protocol: http
+---
+spring:
+  profiles: stage
+  application:
+    name: demoservice
+server:
+  port: 9090
+  host: 10.1.10.2
+  user: root
+  protocol: http
+---
+spring:
+  profiles: prod
+  application:
+    name: demoservice
+server:
+  port: 4431
+  host: 10.1.10.1
+  user: root
+  protocol: https

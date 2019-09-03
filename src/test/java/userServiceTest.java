@@ -10,13 +10,17 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Tag;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
-import services.envConfigService;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import services.userService;
 
 @Tag("ffLite")
 public class userServiceTest {
+
+    @Value("${spring.application.name}")
+    static String name;
 
     private userService userService;
     private static String LOGIN_ENDPOINT = "/api/v1/signIn";
@@ -28,12 +32,13 @@ public class userServiceTest {
      */
     @BeforeAll
     public static void beforeAll() {
-        envConfigService envConfigService = new envConfigService();
-        envConfigService.loadEnvProperties();
-        if (envConfigService.checkConnection() != 200) {
-            fail("server host connection failed ...");
-        }
-        RestAssured.baseURI = System.getProperty("protocol") + "://" + System.getProperty("host");
+        System.out.println("spring.application.name "+name);
+//        envConfigService envConfigService = new envConfigService();
+//        envConfigService.loadEnvProperties();
+//        if (envConfigService.checkConnection() != 200) {
+//            fail("server host connection failed ...");
+//        }
+//        RestAssured.baseURI = protocol + "://" + host;
     }
 
     /**
