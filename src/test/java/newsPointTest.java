@@ -19,20 +19,20 @@ public class newsPointTest {
         RestAssured.baseURI = NEWSPOINT_BASE_URL;
 
         // build request spec
-        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
-        requestSpecBuilder.addParam("channel", "*");
-        requestSpecBuilder.addParam("section", "top-news");
-        requestSpecBuilder.addParam("lang", "english");
-        requestSpecBuilder.addParam("curpg", "1");
-        requestSpecBuilder.addParam("pp", "5");
-        requestSpecBuilder.addParam("v", "v1");
-        requestSpecBuilder.addParam("fromtime", "1551267146210");
+        RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder()
+        .addParam("channel", "*")
+        .addParam("section", "top-news")
+        .addParam("lang", "english")
+        .addParam("curpg", "1")
+        .addParam("pp", "5")
+        .addParam("v", "v1")
+        .addParam("fromtime", "1551267146210");
         RequestSpecification requestSpec = requestSpecBuilder.build();
 
         // build response spec
-        ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder();
-        responseSpecBuilder.expectStatusCode(200);
-        responseSpecBuilder.expectBody(matchesJsonSchemaInClasspath("schema/NewsPointSchema.json"));
+        ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder()
+        .expectStatusCode(200)
+        .expectBody(matchesJsonSchemaInClasspath("schema/NewsPointSchema.json"));
         ResponseSpecification responseSpec = responseSpecBuilder.build();
 
         // send newspoint request to verify response

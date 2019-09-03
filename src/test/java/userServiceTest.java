@@ -48,10 +48,10 @@ public class userServiceTest {
 
         // build login request spec
         RequestSpecification loginRequest = userService.login();
-        ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder();
+        ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder()
 
         // build login response spec
-        responseSpecBuilder.expectStatusCode(200);
+        .expectStatusCode(200);
         ResponseSpecification responseSpec = responseSpecBuilder.build();
 
         // send login request to verify response
