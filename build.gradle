@@ -16,6 +16,8 @@ ext {
 }
 
 dependencies {
+    testCompile group: 'org.springframework', name: 'spring-core', version: '4.1.0.RELEASE'
+
     //Junit 4
     testCompile 'junit:junit:4.12'
     testRuntime 'org.junit.vintage:junit-vintage-engine:5.5.1'
@@ -23,7 +25,6 @@ dependencies {
     //Junit 5
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.1'
     testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
-    //testCompile 'org.junit.platform:junit-platform-runner:1.0.0-M4'
 
     //Restassured
     testCompile 'io.rest-assured:rest-assured:3.3.0'

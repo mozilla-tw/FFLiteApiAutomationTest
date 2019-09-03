@@ -13,12 +13,14 @@ import org.junit.jupiter.api.Tag;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import services.envConfigService;
-import services.userService;
+import services.UserService;
+
+import java.io.IOException;
 
 @Tag("ffLite")
 public class userServiceTest {
 
-    private userService userService;
+    private UserService userService;
     private static String LOGIN_ENDPOINT = "/api/v1/signIn";
 
     /**
@@ -27,7 +29,7 @@ public class userServiceTest {
      * 3. set baseUrl
      */
     @BeforeAll
-    public static void beforeAll() {
+    public static void beforeAll() throws IOException {
         envConfigService envConfigService = new envConfigService();
         envConfigService.loadEnvProperties();
         if (envConfigService.checkConnection() != 200) {
@@ -41,16 +43,16 @@ public class userServiceTest {
      * 2. verify response 200
      */
     @Test
-    public void check_login_success() {
+    public void check_login_success() throws IOException {
         // load user profile from env
-        userService = new userService();
+        userService = new UserService();
         userService.loadUserProfile();
 
         // build login request spec
         RequestSpecification loginRequest = userService.login();
         ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder()
 
-        // build login response spec
+                // build login response spec
         .expectStatusCode(200);
         ResponseSpecification responseSpec = responseSpecBuilder.build();
 
