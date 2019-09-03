@@ -4,10 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.text.MessageFormat;
 import java.util.Properties;
 
@@ -35,25 +32,20 @@ public class envConfigService {
     /**
      * load properties based on server environment
      */
-    public void loadEnvProperties() {
+    public void loadEnvProperties() throws IOException {
+        FileInputStream propFile = null;
         String envPropertyFile = MessageFormat.format("src/test/resources/env/{0}.properties", System.getProperty("env", "local"));
-        try (InputStream input = new FileInputStream(envPropertyFile)) {
-
-            // load env properties file
-            Properties prop = new Properties();
-            prop.load(input);
-
-            // get the property value and print it out
-            for (String name : prop.stringPropertyNames()) {
-                String value = prop.getProperty(name);
-                System.setProperty(name, value);
-                logger.info("{}:{}", name, value);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        propFile = new FileInputStream(envPropertyFile);
+        Properties p = new Properties(System.getProperties());
+        p.load(propFile);
+<<<<<<< HEAD
+        // set the system properties
+        System.setProperties(p);
+        // display new properties
+=======
+        System.setProperties(p);
+>>>>>>> 3d78cff... use simple system properties to load property file
+        System.getProperties().list(System.out);
     }
 }
 

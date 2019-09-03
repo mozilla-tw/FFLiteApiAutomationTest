@@ -20,19 +20,19 @@ public class newsPointTest {
 
         // build request spec
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder()
-        .addParam("channel", "*")
-        .addParam("section", "top-news")
-        .addParam("lang", "english")
-        .addParam("curpg", "1")
-        .addParam("pp", "5")
-        .addParam("v", "v1")
-        .addParam("fromtime", "1551267146210");
+                .addParam("channel", "*")
+                .addParam("section", "top-news")
+                .addParam("lang", "english")
+                .addParam("curpg", "1")
+                .addParam("pp", "5")
+                .addParam("v", "v1")
+                .addParam("fromtime", "1551267146210");
         RequestSpecification requestSpec = requestSpecBuilder.build();
 
         // build response spec
         ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder()
-        .expectStatusCode(200)
-        .expectBody(matchesJsonSchemaInClasspath("schema/NewsPointSchema.json"));
+                .expectStatusCode(200)
+                .expectBody(matchesJsonSchemaInClasspath("schema/NewsPointSchema.json"));
         ResponseSpecification responseSpec = responseSpecBuilder.build();
 
         // send newspoint request to verify response
