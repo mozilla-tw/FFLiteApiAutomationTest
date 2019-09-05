@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+}
+
+group 'FFLiteApiAutomationTest'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    env = project.findProperty('env') ? env : 'local'
+}
+
+dependencies {
+    //Junit 4
+    testCompile 'junit:junit:4.12'
+    testRuntime 'org.junit.vintage:junit-vintage-engine:5.5.1'
+
+    //Junit 5
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
+    //testCompile 'org.junit.platform:junit-platform-runner:1.0.0-M4'
+
+    //Restassured
+    testCompile 'io.rest-assured:rest-assured:3.3.0'
+    testCompile 'io.rest-assured:json-schema-validator:3.3.0'
+    testCompile 'org.apache.logging.log4j:log4j-api:2.7'
+    testCompile 'org.apache.logging.log4j:log4j-core:2.7'
+    testCompile 'org.apache.logging.log4j:log4j-slf4j-impl:2.7'
+}
+
+task runApiTest(type: Test) {
+    group "qa"
+    description 'Run API test on ${env} and generate report'
+    systemProperty 'env', project.getProperty('env')
+
+
+    // check env among ['mock', 'local', 'stage', 'prod']
+    doFirst {
+        def availableEnvironments = ['mock', 'local', 'stage', 'prod']
+        if (!availableEnvironments.contains(env)) {
+            def message = "Target environment '${env}' not allowed. Please use one of the following: " +
+                    availableEnvironments.join(", ")
+            throw new GradleException(message)
+        }
+    }
+
+    //generate html api test report
+    useJUnitPlatform{
+            includeTags 'ffLite'
+    }
+    reports {
+            html.enabled = true
+    }
+    testLogging {
+            events "passed", "skipped", "failed"
+            showStandardStreams = true
+        }
+}
+
+
