@@ -12,7 +12,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 @Tag("partner")
 public class newsPointTest {
-    private static final String NEWSPOINT_BASE_URL = "http://partnersnp.indiatimes.com/feed/fx/atp";
+    private static final String NEWSPOINT_BASE_URL = "ENTER_PARTER_URL";
 
     @Test
     public void checkNewsPointJsonSchema() {
